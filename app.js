@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const express = require("express");
 const app = express();
 const db = require('./config/keys').mongoURI;
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); // this is a dependency library that tells our app what sort of requests it should respond to
 const passport = require('passport'); // this is a dependency from our package.json
-const users = require("./routes/api/users");
-const tweets = require("./routes/api/tweets");
+const users = require("./routes/api/users"); //importing users routes 
+const tweets = require("./routes/api/tweets"); // importing tweets routes 
 
-mongoose
+mongoose // connect mongoose to the MongoDB 
   .connect(db, { 
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -16,8 +16,8 @@ mongoose
   .catch(err => console.log(err));
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false })); // respond to urlencoded software like postman 
+app.use(bodyParser.json()); // respond to json requests
 app.use(passport.initialize());
 
 require('./config/passport')(passport);
