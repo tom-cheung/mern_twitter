@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router(); // get a Router object off of the router 
+const router = express.Router(); // get a Router object off of express 
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User') // import the user model, allows you to post to it 
 const jwt = require('jsonwebtoken');
