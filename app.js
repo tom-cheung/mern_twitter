@@ -1,3 +1,4 @@
+const path = require('path');
 const mongoose = require('mongoose');
 const express = require("express");
 const app = express();
@@ -32,8 +33,6 @@ app.use("/api/users", users);
 app.use("/api/tweets", tweets);
 
 // suppose to go here? 
-const path = require('path');
-
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));
     app.get('/', (req, res) => {
