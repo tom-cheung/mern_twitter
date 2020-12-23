@@ -31,6 +31,18 @@ app.use("/api/users", users);
 // a ES6 function that returns a json object 
 app.use("/api/tweets", tweets);
 
+// suppose to go here? 
+const path = require('path');
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('frontend/build'));
+    app.get('/', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    })
+  }
+
+//
+
 const port = process.env.PORT || 5000;
 // tells the app object to listen on a specific port 
 // process.env.PORT deals with eventual Heroku deployment 
